@@ -43,7 +43,7 @@
             }];
             
             //配置文本框
-            [alertVC addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            [alertVC addTextFieldConfigurationHanlder:^(UITextField *textField) {
                 textField.keyboardType = UIKeyboardTypeDefault;
                 textField.returnKeyType = UIReturnKeyDone;
                 textField.font = [UIFont systemFontOfSize:16];
@@ -52,7 +52,7 @@
             }];
             
             //配置文本框文本校验规则并返回校验结果
-            [alertVC addInputTextWithCheckHandler:^BOOL(NSString *inputText) {
+            [alertVC addInputTextCheckHandler:^BOOL(NSString *inputText) {
                 return NO;
             }];
             

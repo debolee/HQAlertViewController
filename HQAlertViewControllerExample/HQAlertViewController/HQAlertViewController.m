@@ -72,11 +72,11 @@ alpha:alphaValue]
     return self;
 }
 
-- (void)addTextFieldWithConfigurationHandler:(TextFieldConfigurationHandler)configurationHandler {
+- (void)addTextFieldConfigurationHanlder:(TextFieldConfigurationHandler)configurationHandler {
     self.configurationHandler = configurationHandler;
 }
 
-- (void)addInputTextWithCheckHandler:(InputTextCheckHandler)checkHandler {
+- (void)addInputTextCheckHandler:(InputTextCheckHandler)checkHandler {
     self.checkHandler = checkHandler;
 }
 
@@ -166,7 +166,16 @@ alpha:alphaValue]
     }];
     
     _inputTextField.delegate = self;
-    self.configurationHandler(self.inputTextField);
+    if (self.configurationHandler) {
+        self.configurationHandler(self.inputTextField);
+    } else {
+        _inputTextField.keyboardType = UIKeyboardTypeDefault;
+        _inputTextField.returnKeyType = UIReturnKeyDone;
+        _inputTextField.font = [UIFont systemFontOfSize:16];
+        _inputTextField.placeholder = @"";
+        _inputTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    }
+    
     [_inputTextField becomeFirstResponder];
     
 }
@@ -247,7 +256,7 @@ alpha:alphaValue]
         POPSpringAnimation *springAnimationCenter = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
         springAnimationCenter.springSpeed      = 0;
         springAnimationCenter.springBounciness = 0.8;
-        springAnimationCenter.dynamicsFriction = 6;
+        springAnimationCenter.dynamicsFriction = 10;
         springAnimationCenter.toValue = [NSValue valueWithCGPoint:center];
         [self.alertView pop_addAnimation:springAnimationCenter forKey:nil];
         

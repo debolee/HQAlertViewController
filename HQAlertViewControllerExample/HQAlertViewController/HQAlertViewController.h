@@ -17,8 +17,8 @@ typedef BOOL (^InputTextCheckHandler)(NSString *inputText);
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message ConfirmAction:(ConfirmBlock)confirmBlock andCancelAction:(CancelBlock)cancelBlcok;
 
 //配置TextField相关属性
-- (void)addTextFieldWithConfigurationHandler:(TextFieldConfigurationHandler)configurationHandler;
+- (void)addTextFieldConfigurationHanlder:(TextFieldConfigurationHandler)configurationHandler;
 
 //配置TextField文本合法性校验规则，如果合法，点击确定按钮后弹窗会自动消失，反之则不会消失
-- (void)addInputTextWithCheckHandler:(InputTextCheckHandler)checkHandler;
+- (void)addInputTextCheckHandler:(InputTextCheckHandler)checkHandler;
 @end
