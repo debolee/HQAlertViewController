@@ -1,2 +1,8 @@
 
 *.xcuserstate
+
+Pods
+
+HQAlertViewControllerExample.xcworkspace
+
+Podfile.lock
